@@ -1,0 +1,63 @@
+from tkinter import *
+import random
+from datetime import date
+today= date.today()
+i=j=k=1
+k=random.randint(2000,50009)
+def readvalue():
+        s=e3.get()
+        s1=e1.get()
+        label5=Label(top,text="SEE YOU AGAIN (:"+" "+str(s1),bg="green",fg="black").place(x=30,y=600)
+        p=int(s)
+        global i
+        if i==1 and p==k:
+           b=Button(top,text="ORDER FOOD",width=15,height=1,bg="yellow",fg="blue",command=menu).place(x=30,y=190)
+           i=i+1
+def menu():
+    global j
+    if j==1:
+       label3= Label(top,text="MENU:",bg='red',fg='black').place(x=30,y=240)
+       c1=Checkbutton(top,text="pizza RS(₹):200",bg='orange').place(x=30,y=280)
+       c2=Checkbutton(top,text="manchuria RS(₹):300",bg='orange').place(x=30,y=320) 
+       c3=Checkbutton(top,text="noodels RS(₹):400",bg='orange').place(x=30,y=360)
+       c4=Checkbutton(top,text="pasta RS(₹):500",bg='orange').place(x=30,y=400)
+       j=j+1
+       v=Button(top,text="BUY",width=15,height=1,bg="yellow",fg="blue",command=buy).place(x=30,y=450)
+def buy():
+    s1=spin1.get()
+    s2=spin2.get()
+    s3=spin3.get()
+    s4=spin4.get()
+    bill=int(s1)*200+int(s2)*300+int(s3)*400+int(s4)*500
+    label4=Label(top,text="THANK YOU FOR ORDERING"+","+"YOUR BILL AMOUNT IS:₹ "+str(bill),bg="white",fg="blue").place(x=30,y=550)
+top=Tk()
+top.geometry("999x799")
+top.title("FOOD ORDER")
+# Add image file
+bg = PhotoImage(file = "pio.png")
+# Show image using label
+label9 = Label( top, image = bg)
+label9.place(x = 0, y = 0)
+un=Label(top,text="UserName").grid(row=0)
+pwd=Label(top,text="password").grid(row=1)
+captcha=Label(top,text="CAPTCHA").grid(row=2)
+submit=Button(top,text="Submit",activebackground='yellow',activeforeground='red',command=readvalue).place(x=10,y=90)
+e1=Entry(top)
+e1.grid(row=0, column=1)
+e2=Entry(top)
+e2.grid(row=1, column=1)
+e3=Entry(top)
+e3.grid(row=2, column=1)
+label = Label(top,text="captcha:"+str(k),bg='yellow' ).place(x=6,y=70)
+label2= Label(top,text="DATE:"+str(today),bg='white',fg='red',width=20).place(x=13,y=155)
+label3= Label(top,text="FOOD ORDER",bg='white',fg='red',width=20).place(x=4,y=120)
+spin1=Spinbox(top, from_= 0, to = 25,width=5)
+spin1.place(x=145,y=280)
+spin2=Spinbox(top, from_= 0, to = 25,width=5)
+spin2.place(x=170,y=320) 
+spin3=Spinbox(top, from_= 0, to = 25,width=5)
+spin3.place(x=150,y=360)
+spin4=Spinbox(top, from_= 0, to = 25,width=5)
+spin4.place(x=140,y=400)
+label8= Label(top,text="DEVELOPED BY:SATHVIK",bg='yellow',fg="blue" ).place(x=30,y=700)
+top.mainloop()
